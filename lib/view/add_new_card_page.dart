@@ -15,7 +15,7 @@ class _AddNewCardPageState extends State<AddNewCardPage> {
   bool checkedValue = false;
   final _formKey = GlobalKey<FormState>();
   bool _enabled = false;
-  Color btnColor = Palette.charlotte;
+  // Color btnColor =;
 
   @override
   Widget build(BuildContext context) {
@@ -62,12 +62,13 @@ class _AddNewCardPageState extends State<AddNewCardPage> {
                             SizedBox(height: 34),
                             Text(
                               'Bank card',
-                              style: Theme.of(context)
+                              style: Theme
+                                  .of(context)
                                   .textTheme
                                   .subtitle1
                                   .copyWith(
-                                      color: Palette.eastBay,
-                                      fontWeight: FontWeight.w600),
+                                  color: Palette.eastBay,
+                                  fontWeight: FontWeight.w600),
                             ),
                             SizedBox(height: 24),
                             TextFormField(
@@ -76,10 +77,8 @@ class _AddNewCardPageState extends State<AddNewCardPage> {
                                 setState(() {
                                   if (text.length > 0) {
                                     _enabled = true;
-                                    btnColor = Palette.athensGray;
                                   } else {
                                     _enabled = false;
-                                    btnColor = Palette.charlotte;
                                   }
                                 });
                               },
@@ -91,12 +90,13 @@ class _AddNewCardPageState extends State<AddNewCardPage> {
                                       borderRadius: BorderRadius.circular(8),
                                       borderSide: BorderSide.none),
                                   hintText: 'Card number',
-                                  hintStyle: Theme.of(context)
+                                  hintStyle: Theme
+                                      .of(context)
                                       .textTheme
                                       .subtitle1
                                       .copyWith(
-                                          color:
-                                              Palette.lynch.withOpacity(.6))),
+                                      color:
+                                      Palette.lynch.withOpacity(.6))),
                             ),
                             SizedBox(height: 16),
                             Row(
@@ -119,15 +119,16 @@ class _AddNewCardPageState extends State<AddNewCardPage> {
                                         filled: true,
                                         border: OutlineInputBorder(
                                             borderRadius:
-                                                BorderRadius.circular(8),
+                                            BorderRadius.circular(8),
                                             borderSide: BorderSide.none),
                                         hintText: 'MM / YY',
-                                        hintStyle: Theme.of(context)
+                                        hintStyle: Theme
+                                            .of(context)
                                             .textTheme
                                             .subtitle1
                                             .copyWith(
-                                                color: Palette.lynch
-                                                    .withOpacity(.6))),
+                                            color: Palette.lynch
+                                                .withOpacity(.6))),
                                   ),
                                 ),
                                 SizedBox(width: 16),
@@ -150,15 +151,16 @@ class _AddNewCardPageState extends State<AddNewCardPage> {
                                         filled: true,
                                         border: OutlineInputBorder(
                                             borderRadius:
-                                                BorderRadius.circular(8),
+                                            BorderRadius.circular(8),
                                             borderSide: BorderSide.none),
                                         hintText: 'CVV',
-                                        hintStyle: Theme.of(context)
+                                        hintStyle: Theme
+                                            .of(context)
                                             .textTheme
                                             .subtitle1
                                             .copyWith(
-                                                color: Palette.lynch
-                                                    .withOpacity(.6))),
+                                            color: Palette.lynch
+                                                .withOpacity(.6))),
                                   ),
                                 ),
                               ],
@@ -175,7 +177,8 @@ class _AddNewCardPageState extends State<AddNewCardPage> {
               CheckboxListTile(
                 title: Text(
                   'Remember the card for the next sessions',
-                  style: Theme.of(context)
+                  style: Theme
+                      .of(context)
                       .textTheme
                       .bodyText2
                       .copyWith(color: Palette.eastBay.withOpacity(.5)),
@@ -197,16 +200,24 @@ class _AddNewCardPageState extends State<AddNewCardPage> {
                   children: [
                     Text(
                       'By adding debit/credit card, you agree to the',
-                      style: Theme.of(context).textTheme.caption.copyWith(
+                      style: Theme
+                          .of(context)
+                          .textTheme
+                          .caption
+                          .copyWith(
                           fontWeight: FontWeight.w400, color: Colors.grey),
                     ),
                     Text(
                       'Terms & Conditions',
-                      style: Theme.of(context).textTheme.caption.copyWith(
-                            fontWeight: FontWeight.w400,
-                            color: Palette.pictonBlueL,
-                            decoration: TextDecoration.underline,
-                          ),
+                      style: Theme
+                          .of(context)
+                          .textTheme
+                          .caption
+                          .copyWith(
+                        fontWeight: FontWeight.w400,
+                        color: Palette.pictonBlueL,
+                        decoration: TextDecoration.underline,
+                      ),
                     ),
                   ],
                 ),
@@ -232,11 +243,42 @@ class _AddNewCardPageState extends State<AddNewCardPage> {
                 //             MaterialStateProperty.all<Color>(Colors.red)),
                 //   ),
                 // ),
-                child: RaisedGradientButton(
-                  label: '£160 • Pay',
-                  onPressed: _enabled ? () {} : null,
-                  color: btnColor,
+                child: Container(
+                  height: 50.0,
+                  width: double.maxFinite,
+                  child: RawMaterialButton(
+                    onPressed: _enabled ? () {} : null,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
+                    padding: EdgeInsets.all(0.0),
+                    child: Ink(
+                      decoration: BoxDecoration(
+                          gradient: _enabled ?  LinearGradient(colors: [Palette.pictonBlueL, Palette.pictonBlue],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          ) : LinearGradient(colors: [Palette.charlotte, Palette.charlotte],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          ),
+                          borderRadius: BorderRadius.circular(22)
+                      ),
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          '£160 • Pay',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
+                // child: RaisedGradientButton(
+                //   label: '£160 • Pay',
+                //   onPressed: _enabled ? () {} : null,
+                //   color: btnColor,
+                // ),
               )
             ],
           ),

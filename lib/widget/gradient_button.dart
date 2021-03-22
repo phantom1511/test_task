@@ -18,19 +18,24 @@ class RaisedGradientButton extends StatelessWidget {
       width: double.maxFinite,
       height: 47,
       decoration: ShapeDecoration(
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
         gradient: LinearGradient(
             colors: [Palette.pictonBlueL, Palette.pictonBlue],
             begin: Alignment.bottomLeft,
             end: Alignment.topRight),
       ),
-      child: Material(
-        borderRadius: BorderRadius.circular(size),
-        color: Colors.transparent,
+      child: TextButton(
+        onPressed: onPressed,
+        style: ButtonStyle(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(size),
+              ),
+            ),
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Colors.transparent)),
         child: InkWell(
           borderRadius: BorderRadius.circular(size),
-          onTap: onPressed,
           child: Center(
             child: Text(
               label,

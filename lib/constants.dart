@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class Assets {
   static const String close = 'assets/images/close.svg';
-  static const String card1 = 'assets/images/card1.svg';
-  static const String card2 = 'assets/images/card2.svg';
+  static const String card1 = 'assets/images/card1.png';
+  static const String card2 = 'assets/images/card2.png';
   static const String back = 'assets/images/back.svg';
 }
 

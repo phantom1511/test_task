@@ -179,9 +179,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
                         color: Palette.eastBay.withOpacity(.8),
                         fontWeight: FontWeight.w400),
                   ),
-                  leading: SvgPicture.asset(
-                    Assets.card1,
-                  ),
+                  leading: Image.asset(Assets.card1),
                   trailing: Radio(
                     onChanged: (value) {
                       setState(() {
@@ -200,9 +198,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
                         color: Palette.eastBay.withOpacity(.8),
                         fontWeight: FontWeight.w400),
                   ),
-                  leading: SvgPicture.asset(
-                    Assets.card2,
-                  ),
+                  leading: Image.asset(Assets.card2),
                   trailing: Radio(
                     onChanged: (value) {
                       setState(() {
@@ -225,9 +221,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
                       color: Palette.eastBay.withOpacity(.8),
                       fontWeight: FontWeight.w400),
                 ),
-                leading: SvgPicture.asset(
-                  Assets.card2,
-                ),
+                leading: Icon(Icons.credit_card),
                 trailing: Icon(
                   Icons.add,
                   color: Palette.eastBay,
