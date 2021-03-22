@@ -20,12 +20,13 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
   BottomDrawerController _controller = BottomDrawerController();
   int _value = 1;
   int currentColor = 0;
-  bool hasBeenPressed = false;
+    bool hasBeenPressed = false;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.red,
         body: Stack(
           children: [
             _buildBottomDrawer(context),
@@ -57,10 +58,14 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
               style: Theme.of(context)
                   .textTheme
                   .subtitle1
-                  .copyWith(fontWeight: FontWeight.w600),
+                  .copyWith(fontWeight: FontWeight.w600, fontFamily: 'LibreFranklin'),
             ),
-            trailing: SvgPicture.asset(
-              Assets.close,
+            trailing: GestureDetector(
+              onTap: (){
+              },
+              child: SvgPicture.asset(
+                Assets.close,
+              ),
             ),
           ),
           Spacer(),
@@ -74,165 +79,211 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
   }
 
   Widget _buildBottomDrawerBody(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: _bodyHeight,
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 25),
-              Text(
-                'Instant consultation',
-                style: Theme.of(context).textTheme.bodyText2.copyWith(
-                    fontWeight: FontWeight.w400,
-                    color: Palette.eastBay.withOpacity(.8)),
-              ),
-              SizedBox(height: 16),
-              Container(
-                decoration: BoxDecoration(
-                    // shape: BoxShape.circle,
-                    borderRadius: BorderRadius.circular(18),
-                    color: Palette.athensGray),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: TextButton(
-                            onPressed: () {
+    return GestureDetector(
+      onTap: (){},
+      child: Container(
+        width: double.infinity,
+        height: _bodyHeight,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 25),
+                Text(
+                  'Instant consultation',
+                  style: Theme.of(context).textTheme.bodyText2.copyWith(
+                      fontWeight: FontWeight.w400,
+                      color: Palette.eastBay.withOpacity(.8), fontFamily: 'LibreFranklin'),
+                ),
+                SizedBox(height: 16),
+                Container(
+                  height: 38,
+                  decoration: BoxDecoration(
+                      // shape: BoxShape.circle,
+                      borderRadius: BorderRadius.circular(18),
+                      color: Palette.athensGray),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: GestureDetector(
+                            onTap: (){
                               setState(() {
                                 if (!hasBeenPressed) {
                                   hasBeenPressed = !hasBeenPressed;
                                 }
                               });
                             },
-                            style: ButtonStyle(
-                                shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                )),
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                  !hasBeenPressed
-                                      ? Palette.athensGray
-                                      : Colors.white,
-                                )),
-                            child: Text(
-                              'Apple Pay',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2
-                                  .copyWith(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w600),
-                            )),
+                            child: Container(
+                              height: 38,
+                              decoration: BoxDecoration(
+                                color: !hasBeenPressed
+                                    ? Palette.athensGray
+                                    : Colors.white,
+                                borderRadius: BorderRadius.circular(18)
+                              ),
+                              child: TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      if (!hasBeenPressed) {
+                                        hasBeenPressed = !hasBeenPressed;
+                                      }
+                                    });
+                                  },
+                                  style: ButtonStyle(
+                                      shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      )),
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                        Colors.transparent,
+                                      )),
+                                  child: Text(
+                                    'Apple Pay',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText2
+                                        .copyWith(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w600, fontFamily: 'LibreFranklin'),
+                                  )),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: TextButton(
-                            onPressed: () {
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: GestureDetector(
+                            onTap: (){
                               setState(() {
-                                if (hasBeenPressed) {
+                                if (!hasBeenPressed) {
                                   hasBeenPressed = !hasBeenPressed;
                                 }
                               });
                             },
-
-                            style: ButtonStyle(
-
-                                shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                )),
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        !hasBeenPressed
-                                            ? Colors.white
-                                            : Palette.athensGray)),
-                            child: Text(
-                              'Card',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2
-                                  .copyWith(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w600),
-                            )),
+                            child: Container(
+                              height: 38,
+                              decoration: BoxDecoration(
+                                color: hasBeenPressed
+                                    ? Palette.athensGray
+                                    : Colors.white,
+                                borderRadius: BorderRadius.circular(18)
+                              ),
+                              child: TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      if (hasBeenPressed) {
+                                        hasBeenPressed = !hasBeenPressed;
+                                      }
+                                    });
+                                  },
+                                  style: ButtonStyle(
+                                      shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      )),
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                        Colors.transparent,
+                                      )),
+                                  child: Text(
+                                    'Card',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText2
+                                        .copyWith(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w600, fontFamily: 'LibreFranklin'),
+                                  )),
+                            ),
+                          ),
+                        ),
                       ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 40),
+                ListTile(
+                    onTap: () {
+                      onChange: (value) {
+                        setState(() {
+                          _value = value;
+                        });
+                      };
+                    },
+                    title: Text(
+                      '**** 8947',
+                      style: Theme.of(context).textTheme.subtitle1.copyWith(
+                          color: Palette.eastBay.withOpacity(.8),
+                          fontWeight: FontWeight.w400, fontFamily: 'LibreFranklin'),
                     ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 40),
-              ListTile(
+                    leading: Image.asset(Assets.card1),
+                    trailing: Radio(
+                      onChanged: (value) {
+                        setState(() {
+                          _value = value;
+                        });
+                      },
+                      groupValue: _value,
+                      value: 1,
+                      activeColor: Palette.eastBay,
+                    )),
+                Divider(),
+                ListTile(
+                    onTap: () {},
+                    title: Text(
+                      '**** 7464',
+                      style: Theme.of(context).textTheme.subtitle1.copyWith(
+                          color: Palette.eastBay.withOpacity(.8),
+                          fontWeight: FontWeight.w400, fontFamily: 'LibreFranklin'),
+                    ),
+                    leading: Image.asset(Assets.card2),
+                    trailing: Radio(
+                      onChanged: (value) {
+                        setState(() {
+                          _value = value;
+                        });
+                      },
+                      groupValue: _value,
+                      value: 2,
+                      activeColor: Palette.eastBay,
+                    )),
+                Divider(),
+                ListTile(
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => AddNewCardPage()));
+                  },
                   title: Text(
-                    '**** 8947',
+                    'Add new card',
                     style: Theme.of(context).textTheme.subtitle1.copyWith(
                         color: Palette.eastBay.withOpacity(.8),
-                        fontWeight: FontWeight.w400),
+                        fontWeight: FontWeight.w400, fontFamily: 'LibreFranklin'),
                   ),
-                  leading: Image.asset(Assets.card1),
-                  trailing: Radio(
-                    onChanged: (value) {
-                      setState(() {
-                        _value = value;
-                      });
-                    },
-                    groupValue: _value,
-                    value: 1,
-                    activeColor: Palette.eastBay,
-                  )),
-              Divider(),
-              ListTile(
-                  title: Text(
-                    '**** 7464',
-                    style: Theme.of(context).textTheme.subtitle1.copyWith(
-                        color: Palette.eastBay.withOpacity(.8),
-                        fontWeight: FontWeight.w400),
+                  leading: Icon(Icons.credit_card),
+                  trailing: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Icon(
+                      Icons.add,
+                      color: Palette.eastBay,
+                    ),
                   ),
-                  leading: Image.asset(Assets.card2),
-                  trailing: Radio(
-                    onChanged: (value) {
-                      setState(() {
-                        _value = value;
-                      });
-                    },
-                    groupValue: _value,
-                    value: 2,
-                    activeColor: Palette.eastBay,
-                  )),
-              Divider(),
-              ListTile(
-                onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) => AddNewCardPage()));
-                },
-                title: Text(
-                  'Add new card',
-                  style: Theme.of(context).textTheme.subtitle1.copyWith(
-                      color: Palette.eastBay.withOpacity(.8),
-                      fontWeight: FontWeight.w400),
                 ),
-                leading: Icon(Icons.credit_card),
-                trailing: Icon(
-                  Icons.add,
-                  color: Palette.eastBay,
+                SizedBox(height: 40),
+                RaisedGradientButton(
+                  label: '£160 • Pay',
+                  onPressed: () {},
                 ),
-              ),
-              SizedBox(height: 40),
-              RaisedGradientButton(
-                label: '£160 • Pay',
-                onPressed: (){},
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

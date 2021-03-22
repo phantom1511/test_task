@@ -42,7 +42,7 @@ class RaisedGradientButton extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .subtitle1
-                  .copyWith(color: Colors.white, fontWeight: FontWeight.w700),
+                  .copyWith(color: Colors.white, fontWeight: FontWeight.w700, fontFamily: 'LibreFranklin'),
             ),
           ),
         ),
