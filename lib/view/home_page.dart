@@ -125,6 +125,7 @@ class _HomePageState extends State<HomePage> {
                                                       });
                                                     },
                                                     style: ButtonStyle(
+                                                      overlayColor: MaterialStateProperty.all(Color(2)),
                                                         shape: MaterialStateProperty.all<
                                                                 RoundedRectangleBorder>(
                                                             RoundedRectangleBorder(
@@ -177,6 +178,7 @@ class _HomePageState extends State<HomePage> {
                                                       });
                                                     },
                                                     style: ButtonStyle(
+                                                        overlayColor: MaterialStateProperty.all(Color(2)),
                                                         shape: MaterialStateProperty.all<
                                                                 RoundedRectangleBorder>(
                                                             RoundedRectangleBorder(
